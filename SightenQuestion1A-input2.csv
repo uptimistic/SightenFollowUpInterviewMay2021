@@ -1,0 +1,5 @@
+product_type,is_active
+loan,true
+lease,true
+ppa,false
+cash,false
