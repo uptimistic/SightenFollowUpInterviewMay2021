@@ -77,16 +77,25 @@
    ]
   ```
 
-## Solution to Problem 1 :  Reading CSV file to generate input string list object 
+## Solution to Problem 1 :  
 
+### Step 0 (Test Driven Development approach) - reverse-engineered inputs for a universally working parsing Python function on a CSV file
+Parsing CSV file to generate the supplied input string Python tuple collections object for each row
+The following code below, when supplied with a `.csv` file(or any text based file extension) will read each line or row  as a iterable list item
 
-Parsing CSV input string list object
 ```python
 def inputfile_extract(filename):
     with open(filename,'r',encoding='utf-8') as fileObject:
-        collected_dataList=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ]
+        collected_dataList=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ] // the .strip('\n') removes the end of line character after each row 
+        # collected_dataList=[eachLineFromFile for eachLineFromFile in fileObject ] // this line of code reproduces given input lists with end of line \n
         return tuple(collected_dataList)
-print('input_1=',inputfile_extract("SightenQuestion1A-input1.csv"))
-print('input_2=',inputfile_extract("SightenQuestion1A-input2.csv"))
+print('input_1=',inputfile_extract("SightenQuestion1A-input1.csv")) # SightenQuestion1A-input1.csv can be downloaded from repository
+print('input_2=',inputfile_extract("SightenQuestion1A-input2.csv")) # SightenQuestion1A-input2.csv can be downloaded from repository
 ```
+### Step 1 - Pasring input string Python tuple collections object for individual strings in each row 
+
+* Removing the end of line characters `/n` at the end of each row
+  * Option 1 : using String split(<delimeter>) method and specifying the delimeter argument as  `/n` 
+  * Option 2 : using String splitlines() method without specifying  `/n`  argument
+
 
