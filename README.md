@@ -76,3 +76,17 @@
     }
    ]
   ```
+
+## Solution to Problem 1 :  Reading CSV file input string list object 
+
+
+Parsing CSV input string list object
+```python
+def inputfile_extract(filename):
+    with open(filename,'r',encoding='utf-8') as fileObject:
+        collected_dataList=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ]
+        return tuple(collected_dataList)
+print('input_1=',inputfile_extract("SightenQuestion1A-input1.csv"))
+print('input_2=',inputfile_extract("SightenQuestion1A-input2.csv"))
+```
+
