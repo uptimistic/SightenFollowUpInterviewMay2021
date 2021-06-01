@@ -108,7 +108,23 @@ def parse_csv(input):
         parsedDictList.append(dict(zip(headerRow,eachRowTuples[index])))
     print("output = ")    
     pprint.pprint(parsedDictList,sort_dicts=False)# pretty print to retain order
-    #print("output={} ".format(parsedDictList)) # standard formated string print
+    #print("output={} ".format(parsedDictList)) #  non-pretty formated string print
+
+
+input_1 = (
+    'state,solar,storage,energy_efficiency\n'
+    'CA,active,inactive,active\n'
+    'NV,inactive,active,active'
+)
+
+input_2 = (
+    'product_type,is_active\n'
+    'loan,true\n'
+    'lease,true\n'
+    'ppa,false\n'
+    'cash,false\n'
+)
+
 parse_csv(input_1)
 parse_csv(input_2)
 ```
