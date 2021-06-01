@@ -86,13 +86,36 @@ The following code below, when supplied with a `.csv` file(or any text based fil
 ```python
 def inputfile_extract(filename):
     with open(filename,'r',encoding='utf-8') as fileObject:
-        collected_dataList=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ] // the .strip('\n') removes the end of line character after each row 
+        collected_dataList=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ] # the .strip('\n') removes the end of line character after each row 
         # collected_dataList=[eachLineFromFile for eachLineFromFile in fileObject ] // this line of code reproduces given input lists with end of line \n
         return tuple(collected_dataList)
 print('input_1=',inputfile_extract("SightenQuestion1A-input1.csv")) # SightenQuestion1A-input1.csv can be downloaded from repository
 print('input_2=',inputfile_extract("SightenQuestion1A-input2.csv")) # SightenQuestion1A-input2.csv can be downloaded from repository
 ```
 ### Step 1 - Pasring input string Python tuple collections object for individual strings in each row 
+
+
+```python
+import pprint # Python pretty print module to render desired display of output
+def parse_csv(input):
+    parsedDictList=[]# initial collection list to contain mapped dictionaries
+    allRows = input.splitlines()# this is the same is .splitline('\n') method
+    eachRowTuples = [tuple(eachRow.split(',')) for eachRow in allRows]
+    headerRow=eachRowTuples[0]# first index of list of lists
+    # index=1 refers to the second row(first row beneath the header row)
+    #index spans between 1 and one less than the length of allRows
+    for index in range(1,len(eachRowTuples)):
+        parsedDictList.append(dict(zip(headerRow,eachRowTuples[index])))
+    print("output = ")    
+    pprint.pprint(parsedDictList,sort_dicts=False)# pretty print to retain order
+    #print("output={} ".format(parsedDictList)) # standard formated string print
+parse_csv(input_1)
+parse_csv(input_2)
+```
+
+
+
+
 
 * Removing the end of line characters `/n` at the end of each row
   * Option 1 : using String split(<delimeter>) method and specifying the delimeter argument as  `/n` 
