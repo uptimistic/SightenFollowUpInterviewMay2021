@@ -94,6 +94,11 @@ print('input_2=',inputfile_extract("SightenQuestion1A-input2.csv")) # SightenQue
 ```
 ### Step 1 - Pasring input string Python tuple collections object for individual strings in each row 
 
+* Removing the end of line characters `/n` at the end of each row
+  * Option 1 : using String split(<delimeter>) method and specifying the delimeter argument as  `/n`  OR
+  * Option 2 : using String splitlines() method without specifying  `/n`  argument- this method was used in the initial parsing code
+
+
 
 ```python
 import pprint # Python pretty print module to render desired display of output
@@ -110,7 +115,7 @@ def parse_csv(input):
     pprint.pprint(parsedDictList,sort_dicts=False)# pretty print to retain order
     #print("output={} ".format(parsedDictList)) #  non-pretty formated string print
 
-
+# FUNCTION TEST ON GIVEN INPUT 
 input_1 = (
     'state,solar,storage,energy_efficiency\n'
     'CA,active,inactive,active\n'
@@ -131,10 +136,5 @@ parse_csv(input_2)
 
 
 
-
-
-* Removing the end of line characters `/n` at the end of each row
-  * Option 1 : using String split(<delimeter>) method and specifying the delimeter argument as  `/n` 
-  * Option 2 : using String splitlines() method without specifying  `/n`  argument
 
 
