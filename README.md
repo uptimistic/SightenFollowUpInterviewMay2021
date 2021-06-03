@@ -87,13 +87,18 @@ Parsing CSV file to generate the supplied input string Python tuple collections 
 The following code below, when supplied with a `.csv` file(or any text based file extension) will read each line or row  as a iterable list item
 
 ```python
-def inputfile_extract(filename):
-    with open(filename,'r',encoding='utf-8') as fileObject:
-        collected_dataList=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ] # the .strip('\n') removes the end of line character after each row 
-        # collected_dataList=[eachLineFromFile for eachLineFromFile in fileObject ] // this line of code reproduces given input lists with end of line \n
-        return tuple(collected_dataList)
-print('input_1=',inputfile_extract("SightenQuestion1A-input1.csv")) # SightenQuestion1A-input1.csv can be downloaded from repository
-print('input_2=',inputfile_extract("SightenQuestion1A-input2.csv")) # SightenQuestion1A-input2.csv can be downloaded from repository
+
+import pprint
+def inputfile_extract(inputFile):
+    with open(inputFile,'r', encoding='utf-8') as fileObject:
+        collected_datalist=[eachLineFromFile for eachLineFromFile in fileObject ]
+        # collected_datalist=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ] # .strip('\n') can be omitted if end of line charatcer is desired
+        #return collected_datalist
+        print("input = ")
+        pprint.pprint(tuple(collected_datalist),sort_dicts=False)# pretty print to retain order
+inputfile_extract('input1.csv') # test input file is saved in repository
+inputfile_extract('input1.csv') # test input file is saved in repository
+
 ```
 ### Step 1 - Pasring input string Python tuple collections object for individual strings in each row 
 
