@@ -350,5 +350,7 @@ Commission(amount per $ sold)= 30+Tier (# of units)
  
 The high return on time invested for the qualitative exposure to to a high lvel software coding and testing technologies is enormous and not necessarily for  prepping for hardware computer engineering. 
  
- It is againts this interest and background that gravitates me towards full stack developemt with a combo of front end and back-end development
+ I am of a trong belief that with an integrated hybrind knwleged of software and hardware, software development nuances are captured with core solidified concepts that hleps in ctahing up and getting up to speed in terms of the constantly changing frameworks and technology stack evolutions as the core stays the same.
+ 
+ It is againts this interest and background that gravitates me towards full stack developemt with a combo of front end and back-end development. My Journey along NAND2TETRIS has exposed me to computer programming stucture and interpretations(specifically Python and JavaScript), databases(Mostly SQL- based) and efficeincy prioritization through judicious awareness and use of data structures and algorithms.
  *****
