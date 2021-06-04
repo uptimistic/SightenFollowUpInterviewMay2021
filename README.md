@@ -1,5 +1,4 @@
 
-
 # SightenFollowUpInterviewMay2021
 
 *****
@@ -320,6 +319,58 @@ class Quote(models.Model):
  
   > *Problem Statement : Write the function get_commission_amount that returns the commission amount based on a given commission_model and sale :*
 
+ 
+ Whiteboard Mindmap Solution to Problem before Coding 
+ <p align="center">
+  <img src="https://github.com/uptimistic/SightenFollowUpInterviewMay2021/blob/main/Whiteboard.MindMap.Problem4.jpg">
+</p>
+ 
+ Concept Complexity Tree Representation before coding 
+ ```bash
+ ├── CommisionAmmount
+│   ├── CommisionModel
+│   │   ├── CommissionModel1
+│   │   │   ├── Base
+│   │   │   │   ├── Model1
+│   │   │   │   │   ├── Base
+│   │   │   │   │   ├── CommisionTier1
+│   │   │   │   │   ├── Increment(Delta)
+│   │   │   │   │   └── TotalSaleofUnitsSold(Cost)
+│   │   │   │   └── Model2
+│   │   │   │       ├── Base
+│   │   │   │       ├── CommisionTier2
+│   │   │   │       ├── CommissionAmtPerUnit
+│   │   │   │       └── Increment(Delta)
+│   │   │   ├── CommisionTier1
+│   │   │   │   ├── Base
+│   │   │   │   ├── Increment(Delta)
+│   │   │   │   ├── Max
+│   │   │   │   └── UnitCost
+│   │   │   ├── Increment(delta)
+│   │   │   └── TotalSalePriceofUnitsSold(Cost)
+│   │   └── CommissionModel2
+│   │       ├── Base
+│   │       │   ├── Model1
+│   │       │   │   ├── Base
+│   │       │   │   ├── CommisionTier1
+│   │       │   │   ├── Increment(Delta)
+│   │       │   │   └── TotalSaleofUnitsSold(Cost)
+│   │       │   └── Model2
+│   │       │       ├── Base
+│   │       │       ├── CommisionTier2
+│   │       │       ├── CommissionAmtperUnit
+│   │       │       └── Increment(Delta)
+│   │       ├── CommisionAmtPerUnit
+│   │       ├── CommisionTier2
+│   │       │   ├── Base
+│   │       │   ├── Increment(Delta)
+│   │       │   ├── Max
+│   │       │   └── UnitSold
+│   │       └── Increment(delta)
+│   └── Sale
+│       ├── Total Sale of Units Sold(Cost)
+│       └── Units Sold
+ ```
  
  model 1
 y= mx+c
