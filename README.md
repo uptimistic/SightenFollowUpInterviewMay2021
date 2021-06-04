@@ -80,7 +80,7 @@
    ]
   ```
 
-## Solution to Problem 1 :  
+## Solution to Problem 1 :  File Read/Write, Funtions, Data Structures /Algorithmic thinking
 
 ### Step 0 (Test Driven Development approach) - reverse-engineered inputs for a universally working parsing Python function on a CSV file
 Parsing CSV file to generate the supplied input string Python tuple collections object for each row
@@ -158,10 +158,10 @@ parse_csv(input_2)
 
 
 
-####  Solution to Django-SQL Problem 
+####  Solution to Django-SQL Problem : Databases
 
  
- #### 3-1. Retrieve all Quotes -Django
+ #### 2-1. Retrieve all Quotes -Django
  
 ```python
 quotes = Quote.objects.all()
@@ -171,20 +171,20 @@ for quote in quotes:
     print(quote.install_cost)
 ``` 
  
- #### 4-1. Retrieve all Quotes -SQL
+ #### 3-1. Retrieve all Quotes -SQL
  
 ```sql
 SELECT *
 FROM Quote;
 ```
 
- #### 3-2. Retrieve all Quotes where the install_cost equals 1000 -Django
+ #### 2-2. Retrieve all Quotes where the install_cost equals 1000 -Django
  
 ```python
 Quote.objects.filter(install_cost=1000)
 ```
 
-#### 4-2. Retrieve all Quotes where the install_cost equals 1000 -SQL
+#### 3-2. Retrieve all Quotes where the install_cost equals 1000 -SQL
 ```sql
  SELECT *
 FROM Quote
@@ -192,14 +192,14 @@ WHERE install_cost = 1000;
 ```
 
  
-#### 3-3. Retrieve all Quotes where the Project name equals "Project 1 " - Django
+#### 2-3. Retrieve all Quotes where the Project name equals "Project 1 " - Django
 ```python
 projects = Project.objects.prefetch_related('name').filter(name="Project 1")
 quotes = projects.name.all()
 ```
  
  
-#### 4-3. Retrieve all Quotes where the Project name equals "Project 1 " - SQL
+#### 3-3. Retrieve all Quotes where the Project name equals "Project 1 " - SQL
 
 ```sql
 SELECT *
@@ -211,14 +211,14 @@ WHERE Project.name= "Project 1";
 
 
 
-#### 3-4. Retrieve all Quotes where the GenerationProject capacity is greater than 15- Django
+#### 2-4. Retrieve all Quotes where the GenerationProject capacity is greater than 15- Django
 ```python
 
 generationproject = GenerationProject.objects.prefetch_related('capacity').filter(capacity__gt=15)
 quotes = generationproject.capacity.all()
 ```
 
-#### 4-4. Retrieve all Quotes where the GenerationProject capacity is greater than 15 -SQL 
+#### 3-4. Retrieve all Quotes where the GenerationProject capacity is greater than 15 -SQL 
  
 ```sql
 ELECT *
@@ -228,13 +228,13 @@ ON Quote.generationproject_id = GenerationProject.capacity
 WHERE GenerationProject.capcity > 15;
 ```
 
- #### 3-5. Retrieve all Projects that have a Quote with an install_cost greater than 15,000- Django 
+ #### 2-5. Retrieve all Projects that have a Quote with an install_cost greater than 15,000- Django 
 
 ```pythonquote = Quote.objects.prefetch_related('install_cost').get(install_cost__gt=15000)
 projects = quote.install_cost.all()
 
 ```
-#### 4-5. Retrieve all Projects that have a Quote with an install_cost greater than 15,000- Django
+#### 3-5. Retrieve all Projects that have a Quote with an install_cost greater than 15,000- Django
 ```sql
  ELECT *
 FROM Project
@@ -316,10 +316,18 @@ class Quote(models.Model):
  *****
  
 
-## Solution to Problem 4 :  Data Analysis, Regression/Statistics
+## Solution to Problem 4 :  Data Analysis, Regression/Statistics, Algorithmic thinking
  
   > *Problem Statement : Write the function get_commission_amount that returns the commission amount based on a given commission_model and sale :*
 
+ 
+ model 1
+y= mx+c
+y = Commission(amount per $ sold) 
+x= Tier (# of units)
+m= model slope =(125-25)/(5000-1000)=0.025
+c= y -intercept =25 
+Commission(cost )= 25+0.025*Tier (unit cost)
  
 model 2
 y= mx+c
@@ -328,12 +336,14 @@ x= Tier (# of units)
 m= model slope =(45-30)/(15-0)=1
 c= y -intercept =30 
 Commission(amount per $ sold)= 30+Tier (# of units)
+ Delta Tier = 5 units 
+ Delta Commision = $5
 
  *****
 
  
 
- ## Solution to Problem 5 :  
+ ## Solution to Problem 5 :  Generic Software Engineering/Computer Science Interest
  > *Problem Statement : Briefly describe a technology that excites you. It can be broad (e.g. a programming language, framework, or toolkit), narrow (e.g. a specific piece of functionality), something you’ve worked with or something that just interests you. What is it, and what do you find exciting about it? :*
 
  In the past 4-5 years, my exposure to the work of engineering navigated my tasks along the lines of software development and engineering. In spanning across these varied projects, my settled excitement resulted in a resting place of a hybrid combination hardware-software interface implemented through what is popularly known as the NAND2TETRIS. It is a powerful merger of how the software sits on a hardware platform and the concemtual layers of abstracted complexities that begins with fundamental CS logic gates reasoning though key hardware components which then fades effortlessly into the software that sits on the hardware platform.
