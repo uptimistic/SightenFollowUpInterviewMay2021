@@ -325,7 +325,7 @@ class Quote(models.Model):
   <img src="https://github.com/uptimistic/SightenFollowUpInterviewMay2021/blob/main/Whiteboard.MindMap.Problem4.jpg">
 </p>
  
- Concept Complexity Tree Representation before coding 
+Mindmap Concept Complexity Tree Representation before coding 
  ```bash
  ├── CommisionAmmount
 │   ├── CommisionModel
@@ -372,23 +372,23 @@ class Quote(models.Model):
 │       └── Units Sold
  ```
  
- model 1
+Model 1
 y= mx+c
 y = Commission(amount per $ sold) 
 x= Tier (# of units)
 m= model slope =(125-25)/(5000-1000)=0.025
 c= y -intercept =25 
-Commission(cost )= 25+0.025*Tier (unit cost)
+Commission(cost)= 25+0.025*Tier(unit cost)
  
-model 2
+Model 2
 y= mx+c
 y = Commission(amount per $ sold) 
 x= Tier (# of units)
 m= model slope =(45-30)/(15-0)=1
 c= y -intercept =30 
 Commission(amount per $ sold)= 30+Tier (# of units)
- Delta Tier = 5 units 
- Delta Commision = $5
+Delta Tier = 5 units 
+Delta Commision = $5
 
  *****
 
