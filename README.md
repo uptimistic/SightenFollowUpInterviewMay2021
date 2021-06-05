@@ -372,6 +372,7 @@ Mindmap Concept Complexity Tree Representation before coding
 │       └── Units Sold
  ```
  
+ ```
 Model 1
 y= mx+c
 y = Commission(amount per $ sold) 
@@ -389,7 +390,187 @@ c= y -intercept =30
 Commission(amount per $ sold)= 30+Tier (# of units)
 Delta Tier = 5 units 
 Delta Commision = $5
+```
+ 
+ ```python
+ 
 
+class Sale:
+    """
+    units_sold: (int) number of units sold
+    cost: (int) total cost of the sale
+    """
+    def __init__(self, units_sold, cost):
+        self.units_sold = units_sold
+        self.cost = cost
+
+# Sale class instance used in get_commission_amount function
+
+# sale_1 = Sale(5, 2500)
+# instanciates Sale class with 5 units sold for a total of $2500
+# arguments passsed to Sale class are 5, and 2500
+# for units_sold, and cost respectively
+
+class BaseComission:
+    def __init__(self, base, unit, increment):
+        self.base = base
+        self.unit = unit
+        self.increment = increment
+
+class CommissionTier(BaseComission):
+    """
+    base: (int) tier base
+    unit: (string) tier unit; can be 'cost' or 'units_sold'
+    increment: (int) tier increment
+    max: (int) tier max
+    """
+    def __init__(self, base, unit, increment, max_value):
+        super().__init__(base, unit, increment)
+        self.max = max_value
+# CommissionTier class instances used in get_commission_amount function
+
+#tier_1 = CommissionTier(1000, 'cost', 1000, 5000)
+# arguments passsed to BaseComission class are 1000, 'cost', and 1000
+# for base, unit, and increment respectively
+# CommissionTier takes an additional argument of 5000 for  max_value
+
+#tier_2 = CommissionTier(0, 'units_sold', 5, 15)
+# arguments passsed to BaseComission class are 0, 'units_sold', and  5,
+# CommissionTier takes an additional argument of 15 for  max_value
+
+#    Model1 Tier
+
+        if self.unit == 'cost':
+            self.unit = Sale.self.cost
+            self.base = base
+            self.increment = increment
+            self.max = max_value
+            if self.unit<self.base:
+                tier1=0
+            elif self.base<=self.unit<(self.base+self.increment):
+                tier1=25
+            elif (self.base+self.increment)<=self.unit<(self.base+(2*self.increment)):
+                tier1=50
+            elif (self.base+(2*self.increment))<=self.unit<(self.base+(3*self.increment)):
+                tier1=75
+            elif (self.base+(3*self.increment))<=self.unit<(self.base+(4*self.increment)):
+                tier1=100
+            elif self.unit>=self.max:
+                tier1=125
+            return tier1
+
+
+#    Model2 Tier
+
+        elif self.unit == 'units_sold':
+            self.unit = Sale.self.units_sold
+            self.base = base
+            self.increment = increment
+            self.max = max_value
+            if self.base<=self.unit<(self.base+self.increment):
+                tier2=0*self.unit*30
+            elif (self.base+self.increment)<=self.unit<(self.base+(2*self.increment)):
+                tier2=self.unit*35
+            elif (self.base+(2*self.increment))<=self.unit<(self.base+(3*self.increment)):
+                tier2=self.unit*40
+            elif self.unit >= self.max:
+                tier2=self.unit*45
+            return tier2
+
+
+
+
+
+class CommissionModel(BaseComission):
+    """
+    base: (int) commission base
+    unit: (string) commission unit; can be '$' or '$/unit_sold'
+    increment: (int) commission increment
+    tier: (CommissionTier) commission tier
+    """
+    def __init__(self, base, unit, increment, tier):
+        super().__init__(base, unit, increment)
+        self.tier = tier
+
+        if self.unit == '$':
+            model_1=CommissionTier.tier1
+            return model_1
+            print(model_1)
+
+        if self.unit == '$/unit_sold':
+            model_2=CommissionTier.tier2
+            return model_2
+            print(model_2)
+
+# CommissionModel class instances used in get_commission_amount function
+
+#model_1 = CommissionModel(25, '$', 25, tier_1)
+# arguments passsed to BaseComission class are 25, '$', and  25
+# for base, unit, and increment respectively
+# CommissionModel takes an additional argument of tier_1 for  tier
+
+## class instances used in get_commission_amount function
+
+#model_2 = CommissionModel(30, '$/unit_sold', 5, tier_2)
+# arguments passsed to BaseComission class are 30, '$/unit_sold', and 5
+# for base, unit, and increment respectively
+# CommissionModel takes an additional argument of tier_2 for  tier
+
+
+#    CommissionModel1
+
+
+
+
+#    CommissionModel2
+
+
+
+
+
+#**********************************************************************************
+
+
+
+
+def get_commission_amount(sale,commission_model):
+
+     sale_1 = Sale(5, 2500) # sold 5 units for a total of $2500
+     sale_2 = Sale(1, 750) # sold 1 unit for a total of $750
+     sale_3 = Sale(16, 7500) # sold 16 units for a total of $7500
+     tier_1 = CommissionTier(1000, 'cost', 1000, 5000)
+
+     tier_2 = CommissionTier(0, 'units_sold', 5, 15)
+
+     model_1 = CommissionModel(25, '$', 25, tier_1)
+
+     model_2 = CommissionModel(30, '$/unit_sold', 5, tier_2)
+
+        # for model 1, sale 1 would yield a commission of $50:
+     print(get_commission_amount(model_1, sale_1))
+    # 50
+
+    # for model 2, sale 1 would yield a commission of $175:
+     print(get_commission_amount(model_2, sale_1))
+    # 175
+
+    # for model 1, sale 2 would yield a commission of $0:
+     print(get_commission_amount(model_1, sale_2))
+    # 0
+
+    # for model 2, sale 2 would yield a commission of $30:
+     print(get_commission_amount(model_2, sale_2))
+    # 30
+
+    # for model 1, sale 3 would yield a commission of $125:
+     print(get_commission_amount(model_1, sale_3))
+    # 125
+
+    # for model 2, sale 3 would yield a commission of $720:
+     print(get_commission_amount(model_2, sale_3))
+    # 720
+
+ ```
  *****
 
  
