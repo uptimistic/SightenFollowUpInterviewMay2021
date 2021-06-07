@@ -233,7 +233,7 @@ WHERE GenerationProject.capcity > 15;
 projects = quote.install_cost.all()
 
 ```
-#### 3-5. Retrieve all Projects that have a Quote with an install_cost greater than 15,000- Django
+#### 3-5. Retrieve all Projects that have a Quote with an install_cost greater than 15,000- SQL
 ```sql
  ELECT *
 FROM Project
