@@ -503,7 +503,7 @@ class get_commission_amount:
          # unpack  model2 commision into base, and increment respectively
 
         if m2t2base <= self.units < (m2t2base + m2t2delta):
-            CommisionM2 = m2t2base*m2c2base*self.units
+            CommisionM2 = m2c2base*self.units
         elif (m2t2base + m2t2delta) <= self.units < (m2t2base + (2*m2t2delta)):
             CommisionM2 = (m2c2base + m2c2delta)*self.units
         elif (m2t2base + (2*m2t2delta)) <= self.units < (m2t2base + (3*m2t2delta)):
@@ -542,12 +542,11 @@ print(get_commission_amount(16,7500))
 
          1 units sold for a total of $750.
          Model 1 commision : $0
-         Model 2 commision: $0
+         Model 2 commision: $30
 
 
          16 units sold for a total of $7500.
          Model 1 commision : $125
-
          Model 2 commision: $720
 
 
