@@ -394,6 +394,9 @@ Delta Commision = $5
  
  ### Cooded Solution to Problem 4 
  ```python
+#*******************************************************************************
+# CODE FOR PROBLEM 4- OPTIMIZED CLASS OBJECT 
+#*******************************************************************************
 
 
 
@@ -522,8 +525,9 @@ class get_commission_amount:
 #*******************************************************************************
 
 print(get_commission_amount(5,2500))
+print(get_commission_amount(1,750))
 print(get_commission_amount(16,7500))
-print(get_commission_amount(16,7500))
+
  
 #*******************************************************************************
 # OUTPUT OF CODE FOR PROBLEM 4
@@ -536,15 +540,15 @@ print(get_commission_amount(16,7500))
          Model 2 commision: $175
 
 
+         1 units sold for a total of $750.
+         Model 1 commision : $0
+         Model 2 commision: $0
+
+
          16 units sold for a total of $7500.
          Model 1 commision : $125
+
          Model 2 commision: $720
-
-
-         16 units sold for a total of $7500.
-         Model 1 commision : $125
-
-No results found for 'getCommission'Finding with Options: Case Insensitive
 
 
 
