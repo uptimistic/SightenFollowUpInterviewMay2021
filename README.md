@@ -315,7 +315,7 @@ class Quote(models.Model):
  *****
  
 
-## Solution to Problem 4 :  Data Analysis, Regression/Statistics, Algorithmic thinking
+## Solution to Problem 4 :  Algorithmic Thinking, Object Oriented Programming 
  
   > *Problem Statement : Write the function get_commission_amount that returns the commission amount based on a given commission_model and sale :*
 
@@ -376,15 +376,15 @@ Mindmap Concept Complexity Tree Representation before coding
 Model 1
 y= mx+c
 y = Commission(amount per $ sold) 
-x= Tier (# of units)
+x= Tier (total cost of units sold)
 m= model slope =(125-25)/(5000-1000)=0.025
 c= y -intercept =25 
-Commission(cost)= 25+0.025*Tier(unit cost)
+Commission(cost)= 25+0.025*Tier(total cost of units sold)
  
 Model 2
 y= mx+c
 y = Commission(amount per $ sold) 
-x= Tier (# of units)
+x= Tier (# of units sold)
 m= model slope =(45-30)/(15-0)=1
 c= y -intercept =30 
 Commission(amount per $ sold)= 30+Tier (# of units)
@@ -392,185 +392,137 @@ Delta Tier = 5 units
 Delta Commision = $5
 ```
  
- ```python
  
+ ```python
 
-class Sale:
+
+
+class get_commission_amount:
+
+    # units = total units sold
+    # cost = total sales price or total sales cost
+    def __init__(self, units, cost):
+        self.units = units    # instance variable unique to each instance
+        self.cost = cost    # instance variable unique to each instance
+
+
     """
-    units_sold: (int) number of units sold
-    cost: (int) total cost of the sale
+      The only thing to change in Commision class are Tier and Commision parameters
+
+      Model1:
+                model1_tier = (1000, 1000, 5000)
+                #(base,increment,max_value)=(1000, 1000, 5000)
+                model1_commision = (25, 25)
+                #(base,increment)=(25, 25)
+
+
+      Model2:
+                model2_tier = (0, 5, 15)
+                #(base,increment,max_value)=(0, 5, 15)
+                model2_commision = (30, 5)
+                #(base,increment)=(30, 5)
+
     """
-    def __init__(self, units_sold, cost):
-        self.units_sold = units_sold
-        self.cost = cost
 
-# Sale class instance used in get_commission_amount function
-
-# sale_1 = Sale(5, 2500)
-# instanciates Sale class with 5 units sold for a total of $2500
-# arguments passsed to Sale class are 5, and 2500
-# for units_sold, and cost respectively
-
-class BaseComission:
-    def __init__(self, base, unit, increment):
-        self.base = base
-        self.unit = unit
-        self.increment = increment
-
-class CommissionTier(BaseComission):
-    """
-    base: (int) tier base
-    unit: (string) tier unit; can be 'cost' or 'units_sold'
-    increment: (int) tier increment
-    max: (int) tier max
-    """
-    def __init__(self, base, unit, increment, max_value):
-        super().__init__(base, unit, increment)
-        self.max = max_value
-# CommissionTier class instances used in get_commission_amount function
-
-#tier_1 = CommissionTier(1000, 'cost', 1000, 5000)
-# arguments passsed to BaseComission class are 1000, 'cost', and 1000
-# for base, unit, and increment respectively
-# CommissionTier takes an additional argument of 5000 for  max_value
-
-#tier_2 = CommissionTier(0, 'units_sold', 5, 15)
-# arguments passsed to BaseComission class are 0, 'units_sold', and  5,
-# CommissionTier takes an additional argument of 15 for  max_value
-
-#    Model1 Tier
-
-        if self.unit == 'cost':
-            self.unit = Sale.self.cost
-            self.base = base
-            self.increment = increment
-            self.max = max_value
-            if self.unit<self.base:
-                tier1=0
-            elif self.base<=self.unit<(self.base+self.increment):
-                tier1=25
-            elif (self.base+self.increment)<=self.unit<(self.base+(2*self.increment)):
-                tier1=50
-            elif (self.base+(2*self.increment))<=self.unit<(self.base+(3*self.increment)):
-                tier1=75
-            elif (self.base+(3*self.increment))<=self.unit<(self.base+(4*self.increment)):
-                tier1=100
-            elif self.unit>=self.max:
-                tier1=125
-            return tier1
-
-
-#    Model2 Tier
-
-        elif self.unit == 'units_sold':
-            self.unit = Sale.self.units_sold
-            self.base = base
-            self.increment = increment
-            self.max = max_value
-            if self.base<=self.unit<(self.base+self.increment):
-                tier2=0*self.unit*30
-            elif (self.base+self.increment)<=self.unit<(self.base+(2*self.increment)):
-                tier2=self.unit*35
-            elif (self.base+(2*self.increment))<=self.unit<(self.base+(3*self.increment)):
-                tier2=self.unit*40
-            elif self.unit >= self.max:
-                tier2=self.unit*45
-            return tier2
+    #Model 1
+                   # +---------+-------------+
+                   # |  Tier   |  Commission |
+                   # +---------+-------------+
+                   # |  $1000  |    $25      |
+                   # |  $2000  |    $50      |
+                   # |  $3000  |    $75      |
+                   # |  $4000  |    $100     |
+                   # |  $5000  |    $125     |
+                   # +---------+-------------+
 
 
 
+    # Model1 class variable shared by all instances of Commision class
+    model1_tier = (1000, 1000, 5000)
+
+    #(base,increment,max_value)=(1000, 1000, 5000)
+    model1_commision = (25, 25)
+    #(base,increment)=(25, 25)
 
 
-class CommissionModel(BaseComission):
-    """
-    base: (int) commission base
-    unit: (string) commission unit; can be '$' or '$/unit_sold'
-    increment: (int) commission increment
-    tier: (CommissionTier) commission tier
-    """
-    def __init__(self, base, unit, increment, tier):
-        super().__init__(base, unit, increment)
-        self.tier = tier
+    #Model 2
+                    # +----------+-------------+
+                    # |  Tier    |  Commission |
+                    # +----------+-------------+
+                    # | 0 Units  |   $30/unit  |
+                    # | 5 Units  |   $35/unit  |
+                    # | 10 Units |   $40/unit  |
+                    # | 15 Units |   $45/unit  |
+                    # +----------+-------------+
 
-        if self.unit == '$':
-            model_1=CommissionTier.tier1
-            return model_1
-            print(model_1)
-
-        if self.unit == '$/unit_sold':
-            model_2=CommissionTier.tier2
-            return model_2
-            print(model_2)
-
-# CommissionModel class instances used in get_commission_amount function
-
-#model_1 = CommissionModel(25, '$', 25, tier_1)
-# arguments passsed to BaseComission class are 25, '$', and  25
-# for base, unit, and increment respectively
-# CommissionModel takes an additional argument of tier_1 for  tier
-
-## class instances used in get_commission_amount function
-
-#model_2 = CommissionModel(30, '$/unit_sold', 5, tier_2)
-# arguments passsed to BaseComission class are 30, '$/unit_sold', and 5
-# for base, unit, and increment respectively
-# CommissionModel takes an additional argument of tier_2 for  tier
-
-
-#    CommissionModel1
+    # Model2 class variable shared by all instances of Commision class
+    model2_tier = (0, 5, 15)
+    #(base,increment,max_value)=(0, 5, 15)
+    model2_commision = (30, 5)
+    #(base,increment)=(30, 5)
 
 
 
+    def Model1_Tier_Commision(self):
 
-#    CommissionModel2
+        # (base,increment,max_value)=(1000, 1000, 5000)
+        m1t1base,m1t1delta,m1t1max=get_commission_amount.model1_tier
+         # unpack  model1 tier into base, increment, and max respectively
+
+        #(base,increment)=(25, 25)
+        m1c1base,m1c1delta=get_commission_amount.model1_commision
+         # unpack  model1 commision into base, and increment respectively
+
+        if self.cost < m1t1base:
+            CommisionM1 = 0
+        elif m1t1base <= self.cost < (m1t1base + m1t1delta):
+            CommisionM1 = m1c1base
+        elif (m1t1base + m1t1delta) <= self.cost < (m1t1base + (2*m1t1delta)):
+            CommisionM1 = m1c1base + m1c1delta
+        elif (m1t1base + (2*m1t1delta)) <= self.cost < (m1t1base + (3*m1t1delta)):
+            CommisionM1 = (m1c1base + (2*m1c1delta))
+        elif (m1t1base + (3*m1t1delta)) <= self.cost < (m1t1base + (4*m1t1delta)):
+            CommisionM1 = (m1c1base + (3*m1c1delta))
+        elif self.cost >= m1t1max:
+            CommisionM1 = (m1c1base + (4*m1c1delta))
+        return CommisionM1 # Model 1 Commision
 
 
 
+    def Model2_Tier_Commision(self):
+        # (base,increment,max_value)=(0, 5, 15)
+        m2t2base,m2t2delta,m2t2max=get_commission_amount.model2_tier
+         # unpack  model2 tier into base, increment, and max respectively
+
+        #(base,increment)=(30, 5)
+        m2c2base,m2c2delta=get_commission_amount.model2_commision
+
+         # unpack  model2 commision into base, and increment respectively
+
+        if m2t2base <= self.units < (m2t2base + m2t2delta):
+            CommisionM2 = m2t2base*m2c2base*self.units
+        elif (m2t2base + m2t2delta) <= self.units < (m2t2base + (2*m2t2delta)):
+            CommisionM2 = (m2c2base + m2c2delta)*self.units
+        elif (m2t2base + (2*m2t2delta)) <= self.units < (m2t2base + (3*m2t2delta)):
+            CommisionM2 = (m2c2base + (2*m2c2delta))*self.units
+        elif  self.units >= m2t2max:
+            CommisionM2 = (m2c2base + (3*m2c2delta))*self.units
+        return CommisionM2  # Model 2 Commision
+
+    def __str__(self): # string dunder method to display summary of results
+        return """
+         {} units sold for a total of ${}.
+         Model 1 commision : ${}
+         Model 2 commision: ${}
+         """.format(self.units,self.cost,self.Model1_Tier_Commision(),self.Model2_Tier_Commision())
 
 
-#**********************************************************************************
-
-
-
-
-def get_commission_amount(sale,commission_model):
-
-     sale_1 = Sale(5, 2500) # sold 5 units for a total of $2500
-     sale_2 = Sale(1, 750) # sold 1 unit for a total of $750
-     sale_3 = Sale(16, 7500) # sold 16 units for a total of $7500
-     tier_1 = CommissionTier(1000, 'cost', 1000, 5000)
-
-     tier_2 = CommissionTier(0, 'units_sold', 5, 15)
-
-     model_1 = CommissionModel(25, '$', 25, tier_1)
-
-     model_2 = CommissionModel(30, '$/unit_sold', 5, tier_2)
-
-        # for model 1, sale 1 would yield a commission of $50:
-     print(get_commission_amount(model_1, sale_1))
-    # 50
-
-    # for model 2, sale 1 would yield a commission of $175:
-     print(get_commission_amount(model_2, sale_1))
-    # 175
-
-    # for model 1, sale 2 would yield a commission of $0:
-     print(get_commission_amount(model_1, sale_2))
-    # 0
-
-    # for model 2, sale 2 would yield a commission of $30:
-     print(get_commission_amount(model_2, sale_2))
-    # 30
-
-    # for model 1, sale 3 would yield a commission of $125:
-     print(get_commission_amount(model_1, sale_3))
-    # 125
-
-    # for model 2, sale 3 would yield a commission of $720:
-     print(get_commission_amount(model_2, sale_3))
-    # 720
-
+print(get_commission_amount(5,2500))
+print(get_commission_amount(16,7500))
+print(get_commission_amount(16,7500))
  ```
+ 
+ 
  *****
 
  
@@ -584,5 +536,5 @@ The high return on time invested for the qualitative exposure to  a high-lvel so
  
  I am of a strong belief that with an integrated hybrind knwlege of software and hardware, software development nuances are captured with core solidified concepts that hleps in ctahing up and getting up to speed in terms of the constantly changing frameworks and technology stack evolutions as the core stays the same.
  
- It is against this background that gravitates me towards full stack developemt with a combo of front end and back-end development. My Journey along NAND2TETRIS has exposed me to computer programming stucture and interpretations(specifically implemented in Python and JavaScript), databases(Mostly SQL- based) and efficeincy prioritization through judicious awareness and use of data structures and algorithms.
+ It is against this background that gravitates me towards full stack developemt with a combo of front end and back-end development. My Journey along NAND2TETRIS has exposed me to computer programming stucture and interpretations(specifically implemented in Python and JavaScript), databases(Mostly SQL- based) and efficeincy prioritization through judicious awareness and use of data structures and algorithms providing a solid understanding of "computer architecture under the hood" by shedding light on infromed decision making reources during coding in the context of time and space complexities. .
  *****
