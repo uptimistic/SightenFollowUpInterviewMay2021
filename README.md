@@ -551,15 +551,6 @@ print(get_commission_amount(16,7500))
 
 
 
-getCommission
-
-no results
-Find
-Find All
-get_commission_amount
-
-Replace
-Replace All
 
  """
  ```
