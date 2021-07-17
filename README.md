@@ -88,14 +88,23 @@ The following code below, when supplied with a `.csv` file(or any text based fil
 ```python
 
 import pprint
+
 def inputfile_extract(inputFile):
+
     with open(inputFile,'r', encoding='utf-8') as fileObject:
+    
         collected_datalist=[eachLineFromFile for eachLineFromFile in fileObject ]
+        
         # collected_datalist=[eachLineFromFile.strip('\n') for eachLineFromFile in fileObject ] # .strip('\n') can be omitted if end of line charatcer is desired
+        
         #return collected_datalist
+        
         print("input = ")
+        
         pprint.pprint(tuple(collected_datalist),sort_dicts=False)# pretty print to retain order
+        
 inputfile_extract('input1.csv') # test input file is saved in repository
+
 inputfile_extract('input1.csv') # test input file is saved in repository
 
 ```
@@ -108,18 +117,31 @@ inputfile_extract('input1.csv') # test input file is saved in repository
 
 
 ```python
+ 
 import pprint # Python pretty print module to render desired display of output
+ 
 def parse_csv(input):
+ 
     parsedDictList=[]# initial collection list to contain mapped dictionaries
+ 
     allRows = input.splitlines()# this is the same is .splitline('\n') method
+ 
     eachRowTuples = [tuple(eachRow.split(',')) for eachRow in allRows]
+ 
     headerRow=eachRowTuples[0]# first index of list of lists
+ 
     # index=1 refers to the second row(first row beneath the header row)
+ 
     #index spans between 1 and one less than the length of allRows
+ 
     for index in range(1,len(eachRowTuples)):
+ 
         parsedDictList.append(dict(zip(headerRow,eachRowTuples[index])))
+ 
     print("output = ")    
+ 
     pprint.pprint(parsedDictList,sort_dicts=False)# pretty print to retain order
+ 
     #print("output={} ".format(parsedDictList)) #  non-pretty formated string print
 
  ### Given Input for Problem 1
@@ -139,6 +161,7 @@ input_2 = (
 
 parse_csv(input_1)
 parse_csv(input_2)
+ 
 ```
 *****
 
@@ -163,10 +186,15 @@ parse_csv(input_2)
  #### 2-1. Retrieve all Quotes -Django
  
 ```python
+ 
 quotes = Quote.objects.all()
+ 
 for quote in quotes:
+ 
     print(quote.project)
+ 
     print(quote.related_name)
+ 
     print(quote.install_cost)
 ``` 
  
